@@ -1,21 +1,20 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import Layout  from '../components/layout';
-import RichText from '../components/richtext';
+import React, { FunctionComponent } from 'react'
+import { graphql, PageProps } from 'gatsby'
+import Layout from './Layout';
+import RichText from './Richtext';
 
-const PageTemplate = (props) => {
-    const graphqlData: Queries.PageBySlugQuery = props.data;
-    const page = graphqlData.contentfulPage;
-    console.log(page)
+const PageTemplate: FunctionComponent<PageProps<Queries.PageBySlugQuery>> = (props) => {
+  const graphqlData = props.data;
+  const page = graphqlData.contentfulPage;
+  console.log(page)
+  if (page?.slug) {
     return <>
-       
-        <Layout slug={page.slug}>
-            <RichText json={page.textbody} />
-        </Layout>
+      <Layout slug={page.slug}>
+        <RichText json={page?.textbody} />
+      </Layout>
     </>
+  }
 }
-
-export default PageTemplate
 
 export const pageQuery = graphql`
   query PageBySlug($slug: String!) {
@@ -32,19 +31,27 @@ export const pageQuery = graphql`
                   ... on ContentfulAsset {
                     contentful_id
                     __typename
-                    filename
+                    gatsbyImageData
                   }
                   ... on ContentfulImageWithCaption {
                     contentful_id
                     __typename
-                    image { gatsbyImageData }
+                    image { gatsbyImageData(layout: FULL_WIDTH) }
+                    caption { raw }
                   }
                   ... on ContentfulHtml {
                     contentful_id
                     __typename
+                  }
+                  ... on ContentfulAnchor {
+                    contentful_id
+                    __typename
+                    name
                   }
                 }
               }
   }
 }
 `
+
+export default PageTemplate

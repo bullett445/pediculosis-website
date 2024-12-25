@@ -1,14 +1,16 @@
-import React from 'react'
-//import 'scss/gatstrap.scss'
+import React, { FunctionComponent, PropsWithChildren } from 'react'
 import {Col, Container, Navbar, Row} from "react-bootstrap";
-import SideNavigation from "./sideNavigation";
+import SideNavigation from "./SideNavigation";
 import Header from "./header";
-import Footer from "./footer";
+import Footer from "./Footer";
 import Pagination from "./pagination";
 import "../styles/gatstrap.scss"
 
+interface LayoutProps {
+    slug: string;
+}
 
-const Layout = (props) => {
+const Layout: FunctionComponent<PropsWithChildren<LayoutProps>> = (props) => {
     const { slug, children } = props
 
     return (

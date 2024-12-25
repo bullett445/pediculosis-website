@@ -1,22 +1,28 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import {FooterQuery} from '../../graphql-types';
-import RichText from './richtext';
+import RichText from './Richtext';
 
 const Footer = () => {
-    const data: FooterQuery = useStaticQuery(graphql`
+    const data = useStaticQuery<Queries.FooterQuery>(graphql`
     query Footer {
       allContentfulSite {
         nodes {
           footer {
             raw
+            references {
+                  ... on ContentfulAnchor {
+                    contentful_id
+                    __typename
+                    name
+                  }
+                } 
           }
         }
       }
     }
   `)
     //return <pre>{JSON.stringify(data, null, 4)}</pre>
-    return <RichText json={data.allContentfulSite.nodes[0].footer.json}/>
+    return <RichText json={data.allContentfulSite.nodes[0].footer}/>
 }
 
 export default Footer

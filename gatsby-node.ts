@@ -1,10 +1,11 @@
+import { GatsbyNode } from "gatsby"
 import path from "path"
 
-exports.createPages = ({ graphql, actions }) => {
+export const createPages: GatsbyNode['createPages'] = ({ graphql, actions }) => {
     const { createPage } = actions
   
     return new Promise((resolve, reject) => {
-      const page = path.resolve('./src/templates/page.tsx')
+      const page = path.resolve('./src/components/PageTemplate.tsx')
       resolve(
         graphql(
           `query allpages {
