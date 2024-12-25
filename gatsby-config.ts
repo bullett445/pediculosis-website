@@ -9,7 +9,8 @@ const config: GatsbyConfig = {
   // If you use VSCode you can also use the GraphQL plugin
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
-  plugins: [{
+  plugins: ['gatsby-plugin-sass',
+    {
     resolve: 'gatsby-source-contentful',
     options: {
       "accessToken": "92P9TO1pxy6x0hfjkEG3trcufacecSQtIrKRAs-d6zM",

@@ -2,28 +2,36 @@ import React from 'react'
 import { Link } from 'gatsby'
 
 import {BLOCKS,  INLINES, MARKS} from "@contentful/rich-text-types"
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+import { documentToReactComponents, Options } from "@contentful/rich-text-react-renderer"
 import {renderRichText} from "gatsby-source-contentful/rich-text"
 
 import ImageWithCaption from './imagewithcaption';
 //import QualifiedAnchorLink from './qualifiedAnchorLink';
 import PlainHtml from './plainhtml';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 
+type TypeContentfulPage = NonNullable<Queries.PageBySlugQuery['contentfulPage']>;
+type TypeTextBody = NonNullable<TypeContentfulPage['textbody']>;
+type TypeReferences = NonNullable<NonNullable<TypeTextBody['references']>[number]>;
+type WithoutEmpty<T> = T extends T ? {} extends T ? never : T : never
+type TypeReference = WithoutEmpty<TypeReferences>
 
-const options = {
+const options: Options = {
     renderMark: {
         [MARKS.CODE]: text => <small>{text}</small>,
     },
     renderNode: {
         [BLOCKS.EMBEDDED_ENTRY]: (node) => {
             //return <pre>{JSON.stringify(node, null, 4)}</pre>
-            console.log(node)
-            const fields = node.data.target.fields;
-            const targetType = node.data.__typename;
+            const data: TypeReference = node.data.target;
+            
+            const targetType = data?.__typename;
             switch (targetType) {
-                case 'imageWithCaption':
+                case 'ContentfulImageWithCaption':
+                    console.log(data)
+                    const image = getImage(data?.image?.gatsbyImageData ?? null)
                     return <div>
-                        <ImageWithCaption fields={fields}/>
+                        {!!image && <GatsbyImage image={image} alt=''/>}
                     </div>
                 case 'ContentfulHtml':
                     return <PlainHtml node={node.data.html.html}/>

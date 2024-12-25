@@ -7,7 +7,7 @@ exports.createPages = ({ graphql, actions }) => {
       const page = path.resolve('./src/templates/page.tsx')
       resolve(
         graphql(
-          `{
+          `query allpages {
               allContentfulPage {
                 edges {
                   node {

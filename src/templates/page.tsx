@@ -2,10 +2,9 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Layout  from '../components/layout';
 import RichText from '../components/richtext';
-import {PageBySlugQuery} from '../gatsby-types';
 
 const PageTemplate = (props) => {
-    const graphqlData: PageBySlugQuery = props.data;
+    const graphqlData: Queries.PageBySlugQuery = props.data;
     const page = graphqlData.contentfulPage;
     console.log(page)
     return <>
@@ -38,6 +37,7 @@ export const pageQuery = graphql`
                   ... on ContentfulImageWithCaption {
                     contentful_id
                     __typename
+                    image { gatsbyImageData }
                   }
                   ... on ContentfulHtml {
                     contentful_id

@@ -5,6 +5,7 @@ import SideNavigation from "./sideNavigation";
 import Header from "./header";
 import Footer from "./footer";
 import Pagination from "./pagination";
+import "../styles/gatstrap.scss"
 
 
 const Layout = (props) => {
