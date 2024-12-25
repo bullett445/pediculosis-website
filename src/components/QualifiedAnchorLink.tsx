@@ -38,7 +38,6 @@ const QualifiedAnchorLink: FunctionComponent<PropsWithChildren<QualifiedAnchorLi
       return obj;
     }, {})
     , [nodes]);
-  console.log(parentSlugByAnchorName)
 
   const parentSlug = parentSlugByAnchorName[to];
   return <AnchorLink to={"/" + parentSlug + "#" + to}>{children}</AnchorLink>

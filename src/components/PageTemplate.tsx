@@ -6,7 +6,6 @@ import RichText from './Richtext';
 const PageTemplate: FunctionComponent<PageProps<Queries.PageBySlugQuery>> = (props) => {
   const graphqlData = props.data;
   const page = graphqlData.contentfulPage;
-  console.log(page)
   if (page?.slug) {
     return <>
       <Layout slug={page.slug}>
@@ -42,6 +41,14 @@ export const pageQuery = graphql`
                   ... on ContentfulHtml {
                     contentful_id
                     __typename
+                    html {
+                      html
+                    }
+                    assets {
+                      file {
+                        url
+                      }
+                    }
                   }
                   ... on ContentfulAnchor {
                     contentful_id

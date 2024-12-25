@@ -1,20 +1,24 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
 
-const PlainHtml = (props) => {
-    return <pre>{JSON.stringify(props.node, null, 4)}</pre>
-    let html: string = props.node.data.target.fields.html.de
-    const assets = props.node.data.target.fields.assets?.de
+interface PlainHtmlProps {
+    node: string;
+    assets: Array<{ file: { url: string } }>;
+}
+
+const PlainHtml: FunctionComponent<PlainHtmlProps> = (props) => {
+    //return <pre>{JSON.stringify(props, null, 4)}</pre>
     let i = 1;
-    if(assets) {
-        for (const asset of assets) {
-            const url = asset.fields.file.de.url
+    let html = props.node;
+    if (props.assets) {
+        for (const asset of props.assets) {
+            const url = asset.file.url
             const placeholder = '%ASSET' + i++;
             const re = new RegExp(placeholder, 'g')
             html = html.replace(re, url);
         }
     }
 
-    return <div dangerouslySetInnerHTML={{ __html: html}}/>
+    return <div dangerouslySetInnerHTML={{ __html: html }} />
 }
 
 export default PlainHtml
