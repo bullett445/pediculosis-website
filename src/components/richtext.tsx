@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 
 import { BLOCKS, INLINES, MARKS } from "@contentful/rich-text-types"
-import { documentToReactComponents, Options } from "@contentful/rich-text-react-renderer"
+import { Options } from "@contentful/rich-text-react-renderer"
 import { renderRichText } from "gatsby-source-contentful/rich-text"
 
 import ImageWithCaption from './Imagewithcaption';
@@ -70,7 +70,8 @@ const options: Options = {
             //    {JSON.stringify(children, null, 4)}</pre>
         },
         [INLINES.ASSET_HYPERLINK]: (node, children) => {
-            return <a href={node.data.uri}>{children}</a>
+            //console.log(node)
+            return <a href={node.data.target.url}>{children}</a>
             //return <pre>  {JSON.stringify(node, null, 4)}
             //    {JSON.stringify(children, null, 4)}</pre>
         },
@@ -88,6 +89,7 @@ const options: Options = {
 
 const RichText = (props) => {
     if (!props.json) return null;
+    //console.log(props.json)
     return <div className={"contentful-rich-text"}>{renderRichText(props.json, options)}</div>
 }
 

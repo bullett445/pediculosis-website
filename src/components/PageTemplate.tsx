@@ -31,12 +31,21 @@ export const pageQuery = graphql`
                     contentful_id
                     __typename
                     gatsbyImageData
+                    url
                   }
                   ... on ContentfulImageWithCaption {
                     contentful_id
                     __typename
                     image { gatsbyImageData(layout: FULL_WIDTH) }
-                    caption { raw }
+                    caption { raw 
+                    references {
+                        ... on ContentfulAsset {
+                          contentful_id
+                          __typename
+                          url
+                        }
+                      }
+                    }
                   }
                   ... on ContentfulHtml {
                     contentful_id
