@@ -62,11 +62,7 @@ export const SideNavigation: FunctionComponent<SideNavigationProps> = ({ slug, k
     }
   })
 
-  //       <Nav.Item key={node.node.slug}><Link to={"/" + node.node.slug}>{node.node.title}</Link></Nav.Item>
-  //   )
-
-  return <>{navItems}</>
-    ;
+  return <>{navItems}</>;
 }
 
 export default SideNavigation;

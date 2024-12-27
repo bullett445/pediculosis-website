@@ -71,9 +71,12 @@ const options: Options = {
         },
         [INLINES.ASSET_HYPERLINK]: (node, children) => {
             //console.log(node)
-            return <a href={node.data.target.url}>{children}</a>
+            return <a href={node.data.target.url} target='_blank'>{children}</a>
             //return <pre>  {JSON.stringify(node, null, 4)}
             //    {JSON.stringify(children, null, 4)}</pre>
+        },
+        [INLINES.HYPERLINK]: (node, children) => {
+            return <a href={node.data.uri} target='_blank'>{children}</a>
         },
         [BLOCKS.EMBEDDED_ASSET]: (node) => {
             const data: TypeReference = node.data.target;

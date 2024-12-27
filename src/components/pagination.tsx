@@ -1,6 +1,6 @@
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
-import React, { FunctionComponent, useEffect } from 'react';
-import { graphql, Link, navigate, useStaticQuery } from 'gatsby';
+import React, { FunctionComponent } from 'react';
+import { graphql, Link, useStaticQuery } from 'gatsby';
 import classnames from 'classnames';
 
 interface PaginationProps {
@@ -38,29 +38,6 @@ const Pagination: FunctionComponent<PaginationProps> = ({ currentSlug }) => {
     let navforward = null;
     let hereIam = false;
 
-    /*if(typeof window !== 'undefined') {
-        const Hammer = require('hammerjs');
-    }
-
-    useEffect(() => {
-        console.log('use effect called ' + currentSlug);
-        const element = document.getElementById('swipeme');
-        console.log(element)
-        const handler = new Hammer(element);
-        handler.on('swipeleft swiperight', (ev) => {console.log(ev)
-            if(ev.type === 'swipeleft') {
-                navigate("/" + navforward.slug)
-            } else if(ev.type === 'swiperight') {
-                navigate("/" + navback.slug)
-            }
-        })
-
-        return () => { console.log('unmount called ' + currentSlug)
-            handler.destroy();
-        }
-    }, []);
-    console.log('pagination called '  + currentSlug);
-    */
     const navNodes = data.allContentfulSite.nodes[0].navigation;
     let pages = [];
     pages.push({ 'slug': 'willkommen', 'title': 'Willkommen' })
@@ -77,7 +54,6 @@ const Pagination: FunctionComponent<PaginationProps> = ({ currentSlug }) => {
                 break;
         }
     }
-
 
     for (const page of pages) {
         if (hereIam) {
