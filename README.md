@@ -1,39 +1,28 @@
 <p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
+  <a href="https://www.pediculosis-gesellschaft.de">
+    <img alt="Pediculosis Gesellschaft e.V." src="https://images.ctfassets.net/zdvvjz2sbmc4/5oKXUnkmRqel4ckUdbiEWc/732aeca00a73c892115f48ba6960496b/family.jpg" width="200" />
   </a>
 </p>
 <h1 align="center">
-  Gatsby Minimal TypeScript Starter
+  www.pediculosis-gesellschaft.de a website built with gatsby and contentful
 </h1>
 
-## 🚀 Quick start
+## Basic features
 
-1.  **Create a Gatsby site.**
+1.  **Contentful data model**
 
-    Use the Gatsby CLI to create a new site, specifying the minimal TypeScript starter.
+    ![contentful data model](https://images.ctfassets.net/zdvvjz2sbmc4/2hKwIoBbi2RbgsPJAVQh4f/b4a7a65ff2919cd94e3d21095b43cdd2/datamodel.png)
 
-    ```shell
-    # create a new Gatsby site using the minimal TypeScript starter
-    npm init gatsby -- -ts
-    ```
+2.  **Basic features**
 
-2.  **Start developing.**
+    The model is mainly based on contentful's rich text feature. Inside the rich text the elements anchor, image-with-caption and html can be placed.
 
-    Navigate into your new site’s directory and start it up.
+    The anchor defines a place in the richt text to scroll to and can be addressed in a link.
+    ![anchor as link target](https://images.ctfassets.net/zdvvjz2sbmc4/3bbEgTPb7INrRzWQLnznMI/a29eb9cc983d418c98a0853bf0fb4b35/anchor_as_target.png)
+    ![anchor as place to scroll to](https://images.ctfassets.net/zdvvjz2sbmc4/59U15LGBDtV5KMwbTQ7gKb/60fefb4d9732b302a163ee67a09d968c/anchorasscrollto.png)
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
 
-3.  **Open the code and start customizing!**
-
-    Your site is now running at http://localhost:8000!
-
-    Edit `src/pages/index.tsx` to see your site update in real-time!
-
-4.  **Learn more**
+3.  **Learn more about gatsby**
 
     - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
     - [Tutorials](https://www.gatsbyjs.com/docs/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
@@ -42,8 +31,13 @@
     - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
     - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
 
-## 🚀 Quick start (Netlify)
+4. **Learn more about contentful**
 
-Deploy this starter with one click on [Netlify](https://app.netlify.com/signup):
+    - Contentful is well documented here [Contentful documentation](https://www.contentful.com/developers/docs/)
+    - Also some starters are around https://github.com/gatsbyjs/gatsby-starter-contentful-homepage
+    - And another one https://github.com/contentful-labs/starter-gatsby-blog
 
-[<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-minimal-ts)
+5. **Learn more about bootstrap**
+    - Responsive design is based on bootstrap. https://getbootstrap.com/
+
+

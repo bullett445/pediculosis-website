@@ -1,4 +1,10 @@
 import type { GatsbyConfig } from "gatsby";
+import { configDotenv } from "dotenv";
+
+// support for .env, .env.development, and .env.production
+configDotenv({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 
 const config: GatsbyConfig = {
   siteMetadata: {
@@ -15,9 +21,10 @@ const config: GatsbyConfig = {
     {
       resolve: 'gatsby-source-contentful',
       options: {
-        "accessToken": "92P9TO1pxy6x0hfjkEG3trcufacecSQtIrKRAs-d6zM",
-        "spaceId": "zdvvjz2sbmc4"
-      }
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        host: process.env.CONTENTFUL_HOST,
+      },
     }, "gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp", {
       resolve: 'gatsby-plugin-manifest',
       options: {
