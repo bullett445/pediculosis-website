@@ -18,7 +18,7 @@ $theme-colors: (
   danger: $red,
   light: $gray-100,
   dark: $gray-800,
-) !default;
+  ) !default;
 
 // Options
 //
@@ -55,6 +55,8 @@ $inverse-color: $gray-600 !default;
 // Links
 //
 // Style anchor elements.
+$link-color: rgb(85, 26, 139
+);
 $link-decoration: none !default;
 $link-hover-decoration: none !default;
 
@@ -70,13 +72,15 @@ ul {
     margin-block-end: 0;
   }
 }
+
 p {
-    white-space: pre-wrap;
+  white-space: pre-wrap;
 }
 
 #header h1 {
   text-align: right;
 }
+
 /*
 html,
 body {
@@ -103,4 +107,3 @@ img {
 img:hover {
   animation: pulse 0.5s;
 }*/
-

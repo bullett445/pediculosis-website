@@ -16,7 +16,7 @@ const ImageWithCaption: FunctionComponent<ImageWithCaptionProps> = (props) => {
     const image = getImage(data?.image?.gatsbyImageData ?? null)
     return <Row>
         <Col md={7}>
-            {!!image && <GatsbyImage className='mb-1' image={image} alt='' />}
+            {!!image && <GatsbyImage className='mb-1' image={image} alt={data?.image?.description} />}
         </Col>
         <Col md={5}>{caption}</Col>
     </Row>

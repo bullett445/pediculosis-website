@@ -1,6 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import { Col, Image } from 'react-bootstrap';
+import { GatsbyImage } from "gatsby-plugin-image";
 
 const Header = () => {
   const data = useStaticQuery<Queries.HeaderQuery>(graphql`
@@ -8,9 +9,8 @@ const Header = () => {
       allContentfulSite {
         nodes {
           logo {
-            file {
-              url
-            }
+            gatsbyImageData
+            description
           }
           title
         }
@@ -18,10 +18,11 @@ const Header = () => {
     }
   `)
   //return <pre>{JSON.stringify(data, null, 4)}</pre>
-  const headerimage = data.allContentfulSite.nodes[0].logo?.file?.url;
-  const pagetitle = data.allContentfulSite.nodes[0].title;
+  const site = data.allContentfulSite.nodes[0]
+  const headerimage = site.logo?.gatsbyImageData;
+  const pagetitle = site.title;
   return <>
-    <Col md={3}><Link to="/"><Image src={headerimage} fluid /></Link></Col>
+    <Col md={3}><Link to="/"><GatsbyImage image={headerimage} alt={site.logo?.description} /></Link></Col>
     <Col md={9}><h1>{pagetitle}</h1></Col>
   </>
 }

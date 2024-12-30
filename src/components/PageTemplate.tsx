@@ -15,6 +15,7 @@ const PageTemplate: FunctionComponent<PageProps<Queries.PageBySlugQuery>> = (pro
   }
 }
 
+
 export const pageQuery = graphql`
   query PageBySlug($slug: String!) {
   contentfulPage(slug: {eq: $slug}) {
@@ -31,12 +32,16 @@ export const pageQuery = graphql`
                     contentful_id
                     __typename
                     gatsbyImageData
+                    description
                     url
                   }
                   ... on ContentfulImageWithCaption {
                     contentful_id
                     __typename
-                    image { gatsbyImageData(layout: FULL_WIDTH) }
+                    image { 
+                      gatsbyImageData(layout: FULL_WIDTH) 
+                      description
+                    }
                     caption { raw 
                     references {
                         ... on ContentfulAsset {
@@ -71,3 +76,11 @@ export const pageQuery = graphql`
 `
 
 export default PageTemplate
+
+interface HeadProps {
+  data: Queries.PageBySlugQuery;
+}
+
+export const Head: FunctionComponent<HeadProps> = ({ data }) => {
+  return <title>{data?.contentfulPage.title}</title>
+}

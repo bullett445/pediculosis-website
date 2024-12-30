@@ -28,11 +28,6 @@ const options: Options = {
             switch (targetType) {
                 case 'ContentfulImageWithCaption':
                     return <ImageWithCaption data={data} />
-
-                    const image = getImage(data?.image?.gatsbyImageData ?? null)
-                    return <div>
-                        {!!image && <GatsbyImage image={image} alt='' />}
-                    </div >
                 case 'ContentfulHtml':
                     return <PlainHtml node={data.html.html} assets={data.assets} />
                 default:
@@ -83,7 +78,7 @@ const options: Options = {
             const targetType = data.__typename;
             if (targetType === 'ContentfulAsset') {
                 const image = getImage(data?.gatsbyImageData ?? null);
-                return !!image && <GatsbyImage className='float-end p-2' image={image} alt='' />
+                return !!image && <GatsbyImage className='float-end' image={image} alt={data.description} />
             }
         }
     }
